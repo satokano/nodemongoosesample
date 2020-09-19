@@ -10,11 +10,15 @@ function createDocuments() {
 	const user = new User({
 		_id: new mongoose.Types.ObjectId(),
 		name: 'test2',
-		email: 'test2@example.com'
+		email: 'test2@example.com',
+		somearray: ["a", "aa", "aaa", "aaaa"]
 	});
 
 	user.save(function (err) {
-		if (err) return;
+		if (err) {
+			console.log(err);
+			return;
+		}
 
 		const product1 = new Product({
 			title: 'title1',
@@ -46,7 +50,7 @@ const port = 3000;
 
 const server = http.createServer((req, res) => {
 	console.log('**** server\n');
-	//createDocuments();
+	createDocuments();
 	getProducts();
 	res.statusCode = 200;
 	res.setHeader('Content-Type', 'text/plain');

@@ -10,6 +10,7 @@ const userSchema = new Schema({
 		type: String,
 		required: true
 	},
+	somearray: [{ type: String, required: true, minlength: 3 }],
 	cart: {
 		items: [
 			{
